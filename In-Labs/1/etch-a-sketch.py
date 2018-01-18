@@ -38,3 +38,4 @@ def drawing_controls(x, y):
 window.onclick(drawing_controls) # call drawing_controls whenever the user clicks the turtle window
 
 pencil.onrelease(pencil.goto)
+turtle.done() # ensure the file can run on the command line
