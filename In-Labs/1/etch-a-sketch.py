@@ -20,8 +20,10 @@ square.goto(-205, 205)
 square.write("Change Color")
 
 pencil = turtle.Turtle() # define the turtle that will be the color-changing pencil
-pencil.shape("circle")
+pencil.shape("circle") # make the turtle look like a dot
 
+# drawing_controls changes the pencil to a random color
+#   when a user clicks inside the square
 def drawing_controls(x, y):
     if (-200 <= x <= -150) and (150 <= y <= 200):
         red = random.random()
@@ -29,6 +31,6 @@ def drawing_controls(x, y):
         blue = random.random()
         pencil.color(red, green, blue)
 
-window.onclick(drawing_controls)
+window.onclick(drawing_controls) # call drawing_controls whenever the user clicks the turtle window
 
 pencil.onrelease(pencil.goto)
