@@ -4,7 +4,7 @@ import random
 window = turtle.Screen()
 
 square = turtle.Turtle() # define the turtle responsible for drawing the square
-square.speed(10) # make the turtle draw at light-speed
+square.speed(0) # make the turtle draw at light-speed
 square.hideturtle() # make the turtle itself invisible
 
 # draw_square performs all the drawing relating to the on-screen square
@@ -13,14 +13,13 @@ def draw_square():
     square.goto(-200, 200)
     square.down()
 
-    for i in range(4):
+    for _ in range(4):
         square.forward(50)
         square.right(90)
-
-    square.up()
-    square.goto(-205, 205)
-    square.write("Change Color")
 draw_square()
+square.up()
+square.goto(-205, 205)
+square.write("Change Color")
 
 pencil = turtle.Turtle() # define the turtle that will be the color-changing pencil
 pencil.shape("circle") # make the turtle look like a dot
