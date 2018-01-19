@@ -28,4 +28,4 @@
 
 * All in-labs and programming assignments should be graded with scores recorded in BrightSpace no later than your lab time on the following Thursday.
 
-[1]: https://www.cs.montana.edu/etch-a-sketch.py
+[1]: https://www.cs.montana.edu/paxton/classes/csci127/inlabs/lab1/etch-a-sketch.py
