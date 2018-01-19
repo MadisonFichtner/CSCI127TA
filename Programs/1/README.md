@@ -1,5 +1,3 @@
-[Source](https://www.cs.montana.edu/paxton/classes/csci127/programs/program1/ "Permalink to CSCI 127, Program 1")
-
 # CSCI 127, Program 1
 
 ## Logistics
