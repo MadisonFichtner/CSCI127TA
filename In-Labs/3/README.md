@@ -25,5 +25,5 @@
 * 3 points - The remove_iterative function is implemented correctly.
 * 4 points - The base case (2 points) and two general cases (1 point each) of the remove_recursive function are implemented correctly.
 
-[1]: https://www.cs.montana.edu/lab3.py
+[1]: https://www.cs.montana.edu/paxton/classes/csci127/inlabs/lab3/
 [2]: https://docs.python.org/3/library/stdtypes.html?highlight=isdigit#str.replace
