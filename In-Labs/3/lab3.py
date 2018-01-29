@@ -5,13 +5,13 @@
 # --------------------------------------
 
 def remove_builtin(sentence):
-    return "" 
+    return sentence.replace(" ","")
 
 def remove_iterative(sentence):
-    return ""
+    return "-----"
 
 def remove_recursive(sentence):
-    return ""
+    return "-----"
 
 # --------------------------------------
 
