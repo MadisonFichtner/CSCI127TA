@@ -15,7 +15,12 @@ def remove_iterative(sentence):
     return str
 
 def remove_recursive(sentence):
-    return ""
+    if sentence == "":
+        return sentence
+    elif sentence[0] == " ":
+        return remove_recursive(sentence[1:])
+    else:
+        return sentence[0] + remove_recursive(sentence[1:])
 
 # --------------------------------------
 
