@@ -8,10 +8,14 @@ def remove_builtin(sentence):
     return sentence.replace(" ","")
 
 def remove_iterative(sentence):
-    return "-----"
+    str = ""
+    for i in range(len(sentence)):
+        if sentence[i] != " ":
+            str += sentence[i]
+    return str
 
 def remove_recursive(sentence):
-    return "-----"
+    return ""
 
 # --------------------------------------
 
