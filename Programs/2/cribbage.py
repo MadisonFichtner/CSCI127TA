@@ -30,7 +30,7 @@ def evaluate_hand(hand_as_list):
     for card in hand_as_list:
         cvals.append(card[0]) # keep track of the card's value
     cvals.sort() # arrange the values in numerical order
-    
+
     print("Points scored:",max(score_3_of_a_kind(cvals),score_pair(cvals))+score_sequence(cvals)+score_fifteen(cvals),"\n")
 
 def print_hand(hand):
