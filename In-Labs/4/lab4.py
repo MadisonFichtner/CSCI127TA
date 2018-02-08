@@ -1,10 +1,16 @@
-def possible_scores(numPlayed, ptsEarned):
-    # determine initial number of w-t-l
-    wins = ptsEarned // 3
-    ties = ptsEarned - wins * 3
-    losses = numPlayed - wins - ties
+def possible_scores(gp, earned):
+    # determine initial combination of w-t-l
+    wins = earned // 3
+    ties = earned - wins * 3
+    losses = gp - wins - ties
 
-    print(wins,"-",ties,"-",losses)
+    while losses > -1 and (wins * 3 + ties == earned):
+        print(wins,"-",ties,"-",losses)
+
+        # see if another combination is possible
+        wins -= 1
+        ties += 3
+        losses = gp - wins - ties
 
 def process_season(season, games_played, points_earned):
     print("Season: " + str(season) + ", Games Played: " + str(games_played) +
