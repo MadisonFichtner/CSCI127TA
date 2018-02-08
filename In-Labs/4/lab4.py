@@ -21,8 +21,8 @@ def process_season(season, games_played, points_earned):
     print()
 
 def process_seasons(seasons):
-    for i in range(len(seasons)):
-        process_season(i+1, seasons[i][0], seasons[i][1])
+    for season in seasons:
+        process_season(seasons.index(season) + 1, season[0], season[1])
 
 def main():
     # format of list: [[season-1-games, season-1-points], [season-2-games, season-2-points], etc.]
