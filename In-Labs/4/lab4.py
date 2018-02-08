@@ -4,8 +4,8 @@ def possible_scores(gp, earned):
     ties = earned - wins * 3
     losses = gp - wins - ties
 
-    while losses > -1 and (wins * 3 + ties == earned):
-        print(wins,"-",ties,"-",losses)
+    while losses > -1:
+        print(str(wins) + "-" + str(ties) + "-" + str(losses))
 
         # see if another combination is possible
         wins -= 1
