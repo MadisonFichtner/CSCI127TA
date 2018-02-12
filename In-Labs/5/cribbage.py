@@ -14,30 +14,6 @@ def pairs(hand):
         result += 2
     return result
 
-def sequence(hand):
-    hand.sort()
-    if hand[0][0] + 1 == hand[1][0] and hand[1][0] + 1 == hand[2][0]:
-        return 3
-    else:
-        return 0
-
-def fifteens(hand):
-    result = 0
-    card_one = hand[0][0]
-    card_two = hand[1][0]
-    card_three = hand[2][0]
-
-    if card_one + card_two + card_three == 15:
-        result +=2
-    if card_one + card_two == 15:
-        result += 2
-    if card_one + card_three == 15:
-        result += 2
-    if card_two + card_three == 15:
-        result += 2
-
-    return result
-
 def evaluate_hand(hand):
     score = pairs(hand) + sequence(hand) + fifteens(hand)
     print("Points scored:", score)
