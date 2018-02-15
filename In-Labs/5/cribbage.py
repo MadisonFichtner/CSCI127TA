@@ -29,7 +29,7 @@ def pairs(hand):
     return result
 
 def evaluate_hand(hand):
-    score = pairs(hand) + sequence(hand) + fifteens(hand) + flush(hand)
+    score = pairs(hand) + flush(hand)
     print("Points scored:", score)
     print()
 
@@ -45,7 +45,7 @@ def process_hands(cribbage_input, cards_in_hand):
 
 def main():
     poker_input = open("cribbage.txt", "r")
-    process_hands(poker_input, 3)
+    process_hands(poker_input, 4)
     poker_input.close()
 
 main()
