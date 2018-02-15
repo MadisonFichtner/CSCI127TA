@@ -4,6 +4,14 @@ def print_hand(hand):
     for number in range(len(hand)):
         print("Card " + str(number + 1) + ": " + str(hand[number][0]) + " of " + hand[number][1].capitalize())
 
+def flush(hand):
+    suit = hand[0][1] # find the first suit
+    for card in hand:
+        # if the suits do not match, award 0 points
+        if card[1] != suit:
+            return 0
+    return 4
+
 def pairs(hand):
     result = 0
     if hand[0][0] == hand[1][0]:
@@ -15,12 +23,11 @@ def pairs(hand):
     return result
 
 def evaluate_hand(hand):
-    score = pairs(hand) + sequence(hand) + fifteens(hand)
+    score = pairs(hand) + sequence(hand) + fifteens(hand) + flush(hand)
     print("Points scored:", score)
     print()
 
 def process_hands(cribbage_input, cards_in_hand):
-
     for hand in cribbage_input:
         hand = hand.split()
         hand_as_list = []
