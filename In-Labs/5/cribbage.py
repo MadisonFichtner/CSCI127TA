@@ -14,18 +14,14 @@ def flush(hand):
 
 def pairs(hand):
     result = 0
-    if hand[0][0] == hand[1][0]:
-        result += 2
-    if hand[0][0] == hand[2][0]:
-        result += 2
-    if hand[0][0] == hand[3][0]:
-        result += 2
-    if hand[1][0] == hand[2][0]:
-        result += 2
-    if hand[1][0] == hand[3][0]:
-        result += 2
-    if hand[2][0] == hand[3][0]:
-        result += 2
+    for i, card1 in enumerate(hand):
+        for j, card2 in enumerate(hand):
+            # if the 2 cards are the same
+            if j <= i:
+                continue
+
+            if card1[0] == card2[0]:
+                result += 2
     return result
 
 def evaluate_hand(hand):
