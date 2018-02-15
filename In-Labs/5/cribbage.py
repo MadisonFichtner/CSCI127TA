@@ -18,7 +18,13 @@ def pairs(hand):
         result += 2
     if hand[0][0] == hand[2][0]:
         result += 2
+    if hand[0][0] == hand[3][0]:
+        result += 2
     if hand[1][0] == hand[2][0]:
+        result += 2
+    if hand[1][0] == hand[3][0]:
+        result += 2
+    if hand[2][0] == hand[3][0]:
         result += 2
     return result
 
