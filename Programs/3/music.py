@@ -9,7 +9,7 @@ def longest_song():
         # if the current song is longer than the longest song
         if float(info[9]) > longest[0]:
             longest[0] = float(info[9])
-            longest[1] = info[33]
+            longest[1] = info[33] # TODO: ensure whole title gets used
         song = lib.readline()
 
     print("Title:", longest[1])
