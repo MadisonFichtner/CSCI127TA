@@ -7,21 +7,20 @@ def print_hand(hand):
 def flush(hand):
     suit = hand[0][1] # find the first suit
     for card in hand:
-        # if the suits do not match, award 0 points
+        # if the suits do not match, award 0 points immediately
         if card[1] != suit:
             return 0
     return 4
 
 def pairs(hand):
     result = 0
-    for i, card1 in enumerate(hand):
-        for j, card2 in enumerate(hand):
-            # if the 2 cards are the same
-            if j <= i:
-                continue
-
-            if card1[0] == card2[0]:
-                result += 2
+    for i, card1 in enumerate(hand): # reference card
+        for j, card2 in enumerate(hand): # compare card
+            # as long as the compare card comes after the reference card
+            if j > i:
+                # award points if there is a pair
+                if card1[0] == card2[0]:
+                    result += 2
     return result
 
 def evaluate_hand(hand):
