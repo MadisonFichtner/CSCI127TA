@@ -5,11 +5,11 @@ def longest_song():
     song = lib.readline() # first song
 
     while song:
-        info = song.split(',')
+        info = song.replace(", ",'`').split(',')
         # if the current song is longer than the longest song
         if float(info[9]) > longest[0]:
             longest[0] = float(info[9])
-            longest[1] = info[33] # TODO: ensure whole title gets used
+            longest[1] = info[33].replace('`',", ")
         song = lib.readline()
 
     print("Title:", longest[1])
@@ -23,15 +23,33 @@ def songs_by_year(year):
     song = lib.readline() # first song
 
     while song:
-        info = song.split(',') # splits on commas in the song name
-        print(song)
+        info = song.replace(", ",'`').split(',')
 
         # if the current song is longer than the longest song
-        if year == info[-1].replace('\n',''):
+        if year == int(info[-1].replace('\n','')):
             count += 1
         song = lib.readline()
 
     print("The number of songs from", year,"is", count)
+    lib.close()
+
+def all_songs_by_artist(artist):
+    lib = open("music.csv",'r')
+    song = lib.readline()
+    song = lib.readline() # first song
+
+    songs = []
+    while song:
+        info = song.replace(", ",'`').split(',')
+
+        if artist.lower() == info[2].lower():
+            songs.append(info[33].replace('`',", "))
+        song = lib.readline()
+
+    songs.sort()
+    for title in songs:
+        print(title)
+
     lib.close()
 
 def menu():
