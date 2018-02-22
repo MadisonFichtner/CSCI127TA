@@ -3,7 +3,7 @@ from csv import reader
 def longest_song():
     lib = open("music.csv",'r')
     libreader = reader(lib, skipinitialspace=True)
-    next(libreader)
+    next(libreader) # skip the column names
 
     longest = [0, 'temp'] # to save details of longest song
     for song in libreader:
@@ -18,7 +18,7 @@ def longest_song():
 def songs_by_year(year):
     lib = open("music.csv",'r')
     libreader = reader(lib, skipinitialspace=True)
-    next(libreader)
+    next(libreader) # skip the column names
 
     count = 0
     for song in libreader:
@@ -31,7 +31,7 @@ def songs_by_year(year):
 def all_songs_by_artist(artist):
     lib = open("music.csv",'r')
     libreader = reader(lib, skipinitialspace=True)
-    next(libreader)
+    next(libreader) # skip the column names
 
     songs = []
     for song in libreader:
