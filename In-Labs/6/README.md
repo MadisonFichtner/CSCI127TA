@@ -1,4 +1,4 @@
-# CSCI 127, In-Lab 6
+# Lab 6: Files
 
 ## Logistics
 
