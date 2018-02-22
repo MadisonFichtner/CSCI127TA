@@ -46,9 +46,15 @@ def all_songs_by_artist(artist):
             songs.append(info[33].replace('`',", "))
         song = lib.readline()
 
-    songs.sort()
-    for title in songs:
-        print(title)
+    print("\nSongs In Alphabetical Order")
+    print("---------------------------")
+    if len(songs) == 0:
+        print("There are no songs by this artist.")
+    else:
+        songs.sort()
+        for title in songs:
+            print(title)
+    print("---------------------------")
 
     lib.close()
 
