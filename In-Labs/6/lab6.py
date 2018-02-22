@@ -10,6 +10,7 @@ def calculate_attendance(playname, filename):
         if info[7].lower() == playname:
             atten += int(info[0])
         play = bway.readline()
+    bway.close()
     return atten
 
 def calculate_revenue(playname, filename):
@@ -24,6 +25,7 @@ def calculate_revenue(playname, filename):
         if info[7].lower() == playname:
             rev += int(info[4])
         play = bway.readline()
+    bway.close()
     return rev
 
 def main():
