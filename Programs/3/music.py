@@ -1,16 +1,15 @@
+from csv import reader
+
 def longest_song():
     lib = open("music.csv",'r')
-    longest = [0, 'temp'] # to save details of longest song
-    song = lib.readline()
-    song = lib.readline() # first song
+    libreader = reader(lib, skipinitialspace=True)
+    next(libreader)
 
-    while song:
-        info = song.replace(", ",'`').split(',')
-        # if the current song is longer than the longest song
-        if float(info[9]) > longest[0]:
-            longest[0] = float(info[9])
-            longest[1] = info[33].replace('`',", ")
-        song = lib.readline()
+    longest = [0, 'temp'] # to save details of longest song
+    for song in libreader:
+        if float(song[9]) > longest[0]:
+            longest[0] = float(song[9])
+            longest[1] = song[33]
 
     print("Title:", longest[1])
     print("Length to nearest second:", round(longest[0]))
@@ -18,33 +17,26 @@ def longest_song():
 
 def songs_by_year(year):
     lib = open("music.csv",'r')
-    count = 0 # number of songs in the year
-    song = lib.readline()
-    song = lib.readline() # first song
+    libreader = reader(lib, skipinitialspace=True)
+    next(libreader)
 
-    while song:
-        info = song.replace(", ",'`').split(',')
-
-        # if the current song is longer than the longest song
-        if year == int(info[-1].replace('\n','')):
+    count = 0
+    for song in libreader:
+        if year == int(song[-1]):
             count += 1
-        song = lib.readline()
 
     print("The number of songs from", year,"is", count)
     lib.close()
 
 def all_songs_by_artist(artist):
     lib = open("music.csv",'r')
-    song = lib.readline()
-    song = lib.readline() # first song
+    libreader = reader(lib, skipinitialspace=True)
+    next(libreader)
 
     songs = []
-    while song:
-        info = song.replace(", ",'`').split(',')
-
-        if artist.lower() == info[2].lower():
-            songs.append(info[33].replace('`',", "))
-        song = lib.readline()
+    for song in libreader:
+        if artist.lower() == song[2].lower():
+            songs.append(song[33])
 
     print("\nSongs In Alphabetical Order")
     print("---------------------------")
