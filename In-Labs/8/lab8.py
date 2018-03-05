@@ -1,13 +1,28 @@
-# -----------------------------------------------------
-# CSCI 127, Lab 8
-# March 8, 2018
-# Your Name
-# -----------------------------------------------------
+class Contact:
+    def __init__(self, first, last, phone):
+        self.first = first
+        self.last = last
+        self.phone = phone
+        self.title = ''
 
+    def get_area_code(self):
+        return self.phone[0:3]
 
-# -----------------------------------------------------
-# Do not change anything below this line
-# -----------------------------------------------------
+    def get_cell_number(self):
+        return self.phone
+
+    def print_entry(self):
+        name = ''
+        if self.title != '':
+            name += self.title + ' '
+        name += self.first + ' ' + self.last
+        print((name).ljust(24), self.phone)
+
+    def set_first_name(self, first):
+        self.first = first
+
+    def set_title(self, title):
+        self.title = title
 
 def print_directory(contacts):
     print("My Contacts")
@@ -15,8 +30,6 @@ def print_directory(contacts):
     for person in contacts:
         person.print_entry()
     print("-----------\n")
-
-# -----------------------------------------------------
 
 def main():
     champ = Contact("???", "Bobcat", "406-994-0000")
@@ -35,7 +48,5 @@ def main():
 
     print("The area code for cell number", champ.get_cell_number(), "is", \
            champ.get_area_code())
-
-# -----------------------------------------------------
 
 main()
