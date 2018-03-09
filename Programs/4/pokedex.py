@@ -97,10 +97,10 @@ def main():
         elif choice == 2:
             name = input("Enter a Pokemon name: ")
             name = name.capitalize()
-            lookup_by_name(pokedex, name)
+            lookup_name(pokedex, name)
         elif choice == 3:
             number = get_choice(1, 1000, "Enter a Pokemon number: ")
-            lookup_by_number(pokedex, number)
+            lookup_number(pokedex, number)
         elif choice == 4:
             how_many_pokemon(pokedex)
         elif choice == 5:
