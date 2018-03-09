@@ -41,6 +41,13 @@ def lookup_name(self, pokedex, name):
             return str(pkmn)
     return "No Pokemon named " + name + " is in the Pokedex"
 
+# lookup_number looks through the given pokedex for a pokemon logged at the given number
+def lookup_number(self, pokedex, number):
+    for pkmn in pokedex:
+        if pkmn.number == number:
+            return str(pkmn)
+    return "Pokemon number " + number + " is not in the Pokedex"
+
 # print_pokedex prints each pokemon in the given pokedex
 def print_pokedex(pokedex):
     print("\nThe Pokedex")
