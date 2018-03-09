@@ -20,7 +20,7 @@ class Contact:
         if self.title != '': # only accomodate pretty printing of title if there is one
             name += self.title + ' '
         name += self.first + ' ' + self.last
-        print((name).ljust(24), self.phone)
+        print('{:23}'.format(name), self.phone)
 
     # set_first_name modifies the contact's first name
     def set_first_name(self, first):
