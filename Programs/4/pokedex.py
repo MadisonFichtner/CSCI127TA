@@ -35,14 +35,14 @@ def create_pokedex(filename):
     return pokedex
 
 # lookup_name looks through the given pokedex for a pokemon named the given name
-def lookup_name(self, pokedex, name):
+def lookup_name(pokedex, name):
     for pkmn in pokedex:
         if pkmn.name == name:
             return str(pkmn)
     return "No Pokemon named " + name + " is in the Pokedex"
 
 # lookup_number looks through the given pokedex for a pokemon logged at the given number
-def lookup_number(self, pokedex, number):
+def lookup_number(pokedex, number):
     for pkmn in pokedex:
         if pkmn.number == number:
             return str(pkmn)
