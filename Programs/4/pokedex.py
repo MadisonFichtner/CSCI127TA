@@ -1,10 +1,10 @@
 import string
 
 class Pokemon:
-    def __init__(self, name, number, hp, types):
+    def __init__(self, name, number, cp, types):
         self.number = number
         self.name = name
-        self.hp = hp
+        self.cp = cp
         self.types = types
 
     # define the string representation of a Pokemon
@@ -13,7 +13,7 @@ class Pokemon:
         # for each additional type, add a separator
         for i in range(1, len(self.types)):
             type_str += " and " + self.types[i]
-        return "Number: " + str(self.number) + ", Name: " + self.name + ", HP: " + str(self.hp) + ", types: " + type_str
+        return "Number: " + str(self.number) + ", Name: " + self.name + ", HP: " + str(self.cp) + ", types: " + type_str
 
 # ---------------------------------------
 
@@ -25,7 +25,7 @@ def create_pokedex(filename):
         pokelist = pokemon.strip().split(",")
         number = int(pokelist.pop(0))           # number
         name = pokelist.pop(0)                  # name
-        combat_points = int(pokelist.pop(0))    # hit points
+        combat_points = int(pokelist.pop(0))    # combat points
         types = [pokelist.pop(0)]               # type
         if len(pokelist) == 1:
             types += [pokelist.pop(0)]          # optional second type
@@ -33,6 +33,16 @@ def create_pokedex(filename):
 
     file.close()
     return pokedex
+
+def how_many_combat_points(pokedex):
+    totCP = 0
+    for pkmn in pokedex:
+        totCP += pkmn.cp
+    print("The total CP in this Pokedex is", totCP)
+
+# how_many_pokemon prints how many pokemon are in the pokedex
+def how_many_pokemon(pokedex):
+    print('There are', len(pokedex), 'Pokemon')
 
 # lookup_name looks through the given pokedex for a pokemon named the given name
 def lookup_name(pokedex, name):
@@ -47,6 +57,7 @@ def lookup_number(pokedex, number):
     for pkmn in pokedex:
         if pkmn.number == number:
             print(pkmn)
+            return
     print("Pokemon number", number, "is not in the Pokedex")
 
 # print_pokedex prints each pokemon in the given pokedex
@@ -82,7 +93,7 @@ def print_menu():
     print("2. Lookup Pokemon by Name")
     print("3. Lookup Pokemon by Number")
     print("4. Print Number of Pokemon")
-    print("5. Print Total Hit Points of All Pokemon")
+    print("5. Print Total Combat Points of All Pokemon")
     print("6. Quit")
 
 # ---------------------------------------
@@ -105,7 +116,7 @@ def main():
         elif choice == 4:
             how_many_pokemon(pokedex)
         elif choice == 5:
-            how_many_hit_points(pokedex)
+            how_many_combat_points(pokedex)
     print("Thank you.  Goodbye!")
 
 main()
