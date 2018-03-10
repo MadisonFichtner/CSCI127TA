@@ -2,12 +2,12 @@ import string
 
 class Pokemon:
     def __init__(self, name, number, cp, types):
-        self.number = number
+        self.number = number # Pokedex number
         self.name = name
-        self.cp = cp
-        self.types = types
+        self.cp = cp         # total combat points
+        self.types = types   # list of all types
 
-    # define the string representation of a Pokemon
+    # __str__ defines the string representation of a Pokemon
     def __str__(self):
         type_str = self.types[0]
         # for each additional type, add a separator
@@ -15,6 +15,8 @@ class Pokemon:
             type_str += " and " + self.types[i]
         return "Number: " + str(self.number) + ", Name: " + self.name + ", HP: " + str(self.cp) + ", types: " + type_str
 
+# ---------------------------------------
+# Pokedex functions
 # ---------------------------------------
 
 def create_pokedex(filename):
@@ -34,6 +36,7 @@ def create_pokedex(filename):
     file.close()
     return pokedex
 
+# how_many_combat_points outputs the total number of combat points in the Pokedex
 def how_many_combat_points(pokedex):
     totCP = 0
     for pkmn in pokedex:
@@ -87,6 +90,7 @@ def get_choice(low, high, message):
                 print("That is not a valid choice, try again.")
     return answer
 
+# print_menu outputs all the user's options
 def print_menu():
     print()
     print("1. Print Pokedex")
@@ -117,6 +121,6 @@ def main():
             how_many_pokemon(pokedex)
         elif choice == 5:
             how_many_combat_points(pokedex)
-    print("Thank you.  Goodbye!")
+    print("Thank you. Goodbye!")
 
 main()
