@@ -1,10 +1,30 @@
-# -----------------------------------------------------
-# CSCI 127, Lab 10
-# March 29, 2018
-# Your Name
-# -----------------------------------------------------
+# Queue is a FIFO queue
+class Queue:
+    def __init__(self, name):
+        self.name = name
+        self.contents = []
 
-# Your solution goes here.  Do not change anything below.
+    # allows += to work for Queue
+    def __iadd__(self, other):
+        self.enqueue(other)
+        return self
+
+    def __str__(self):
+        s = "Contents: "
+        for item in self.contents:
+            s += str(item) + ' '
+        return s
+
+    # remove from the queue
+    def dequeue(self):
+        return self.contents.pop(0)
+
+    # add to the queue
+    def enqueue(self, num):
+        self.contents.append(num)
+
+    def is_empty(self):
+        return len(self.contents) == 0
 
 # -----------------------------------------------------
 
