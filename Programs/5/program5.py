@@ -42,9 +42,6 @@ class EightPuzzle:
         new_x, new_y = self.blank_x, self.blank_y
         valid = False
 
-    def is_puzzle_solved(self):
-        return np.array_equal(self.solution, self.puzzle)
-
         while not valid:
             dir = input("Enter choice [up, down, left, right]: ").lower()
             if dir == "right":
@@ -64,6 +61,9 @@ class EightPuzzle:
                 print("That move is invalid.  Please try again.")
                 valid = False
         return (new_x, new_y)
+
+    def is_puzzle_solved(self):
+        return np.array_equal(self.solution, self.puzzle)
 
 def solve(puzzle):
     steps = 0
