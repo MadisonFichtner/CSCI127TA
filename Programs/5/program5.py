@@ -1,13 +1,5 @@
 import numpy as np
 
-# ---------------------------------------
-# CSCI 127, Joy and Beauty of Data
-# Program 5: Eight Puzzle
-# Your Name, Your Partner's Name
-# ---------------------------------------
-# A brief overview of the program.
-# ---------------------------------------
-
 class EightPuzzle:
 
     def __init__(self):
@@ -37,18 +29,41 @@ class EightPuzzle:
         self.blank_y = 1
 
     def swap_positions(self, x1, y1, x2, y2):
-        self.puzzle[x1][y1], self.puzzle[x2][y2] = \
-                             self.puzzle[x2][y2], self.puzzle[x1][y1]
+        self.puzzle[x1][y1], self.puzzle[x2][y2] = self.puzzle[x2][y2], self.puzzle[x1][y1]
 
-# ---------------------------------------
-# Do not change anything above this line
-# ---------------------------------------
+    def move_blank(self):
+        """ move_blank asks the user where to move the blank """
+        new_x, new_y = self.get_valid_choice()
+        self.swap_positions(self.blank_x, self.blank_y, new_x, new_y)
+        self.blank_x, self.blank_y = new_x, new_y
 
-# Your solution goes here ...
+    def get_valid_choice(self):
+        """ get_valid_choice prompt the user for a valid direction to move the blank """
+        new_x, new_y = self.blank_x, self.blank_y
+        valid = False
 
-# ---------------------------------------
-# Do not change anything below this line
-# ---------------------------------------
+    def is_puzzle_solved(self):
+        return np.array_equal(self.solution, self.puzzle)
+
+        while not valid:
+            dir = input("Enter choice [up, down, left, right]: ").lower()
+            if dir == "right":
+                new_y = self.blank_y + 1
+            elif dir == "up":
+                new_x = self.blank_x - 1
+            elif dir == "down":
+                new_x = self.blank_x + 1
+            elif dir == "left":
+                new_y = self.blank_y - 1
+            else:
+                print("Please enter a valid direction.")
+                continue
+            valid = True
+
+            if new_x < 0 or new_x > 2 or new_y < 0 or new_y > 2:
+                print("That move is invalid.  Please try again.")
+                valid = False
+        return (new_x, new_y)
 
 def solve(puzzle):
     steps = 0
@@ -59,7 +74,7 @@ def solve(puzzle):
         print(puzzle)
         steps += 1
     print("Congratulations - you solved the puzzle in", steps, "steps!\n")
-        
+
 
 def main():
     puzzle = EightPuzzle()
@@ -67,7 +82,5 @@ def main():
     solve(puzzle)
     puzzle.puzzle_2()
     solve(puzzle)
-    
-# ---------------------------------------
 
 main()
