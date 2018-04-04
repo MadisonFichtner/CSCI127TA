@@ -1,12 +1,6 @@
 import numpy as np
 import random
 
-# -------------------------------------------------
-# CSCI 127, Lab 11
-# April 5, 2017
-# Your Name
-# -------------------------------------------------
-
 class Die:
 
     def __init__(self, sides):
@@ -16,8 +10,6 @@ class Die:
     def roll(self):
         """A general method to roll the die"""
         return random.randint(1, self.sides)
-
-# -------------------------------------------------
 
 class Yahtzee:
 
@@ -37,8 +29,31 @@ class Yahtzee:
             counts[roll] += 1
         return counts
 
+    def is_it_full_house(self):
+        """ determine if a full house has been rolled """
+        counts = self.count_outcomes()
+        if len(counts[counts==3]) > 0 and len(counts[counts==2]) > 0:
+            return True
+        return False
+
+    def is_it_large_straight(self):
+        """ determine if a full house has been rolled """
+        counts = self.count_outcomes()
+        otf = counts[1:6] # counts for nums 1-5
+        tts = counts[2:]  # counts for nums 2-6
+        if len(otf[otf>0]) == 5 or len(tts[tts>0]) == 5:
+            return True
+        return False
+
+    def is_it_yahtzee(self):
+        """ determine if a yahtzee has been rolled """
+        counts = self.count_outcomes()
+        if len(counts[counts==5]) > 0:
+            return True
+        return False
+
 # -------------------------------------------------
-        
+
 def main(how_many):
 
     yahtzees = 0
@@ -67,5 +82,3 @@ def main(how_many):
 # -------------------------------------------------
 
 main(5000)
-    
-        
