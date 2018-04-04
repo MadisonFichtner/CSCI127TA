@@ -19,7 +19,7 @@ The [8-puzzle problem][1] is a puzzle invented and popularized by Noyes Palmer C
 
 
 
-    >
+>
 >         1  3        1     3        1  2  3        1  2  3        1  2  3
 >      4  2  5   =>   4  2  5   =>   4     5   =>   4  5      =>   4  5  6
 >      7  8  6        7  8  6        7  8  6        7  8  6        7  8
