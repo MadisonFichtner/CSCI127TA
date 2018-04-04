@@ -61,7 +61,7 @@ def main(how_many):
     large_straights = 0
     game = Yahtzee()
 
-    for i in range(how_many):
+    for _ in range(how_many):
         game.roll_dice()
         if game.is_it_yahtzee():
             yahtzees += 1
