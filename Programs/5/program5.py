@@ -43,14 +43,14 @@ class EightPuzzle:
         valid = False
 
         while not valid:
-            dir = input("Enter choice [up, down, left, right]: ").lower()
-            if dir == "right":
+            direction = input("Enter choice [up, down, left, right]: ").lower()
+            if direction == "right":
                 new_y = self.blank_y + 1
-            elif dir == "up":
+            elif direction == "up":
                 new_x = self.blank_x - 1
-            elif dir == "down":
+            elif direction == "down":
                 new_x = self.blank_x + 1
-            elif dir == "left":
+            elif direction == "left":
                 new_y = self.blank_y - 1
             else:
                 print("Please enter a valid direction.")
