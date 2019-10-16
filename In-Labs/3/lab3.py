@@ -4,23 +4,24 @@
 # Your Name
 # --------------------------------------
 
-def remove_builtin(sentence):
-    return sentence.replace(" ","")
+def count_built_in(sentence):
+    return sentence.count("z")
 
-def remove_iterative(sentence):
-    s = ""
+def count_iterative(sentence):
+    count = 0
     for letter in sentence:
-        if letter != " ":
-            s += letter
-    return s
+        if letter == "z":
+            count += 1
+    return count
 
-def remove_recursive(sentence):
-    if sentence == "":
-        return sentence
-    elif sentence[0] == " ":
-        return remove_recursive(sentence[1:])
+def count_recursive(sentence):
+    s = len(sentence)
+    if s == 0:
+        return 0
+    elif sentence[0] == "z":
+        return 1 + count_recursive(sentence[1:])
     else:
-        return sentence[0] + remove_recursive(sentence[1:])
+        return remove_recursive(sentence[1:])
 
 # --------------------------------------
 
@@ -28,12 +29,13 @@ def main():
     answer = "yes"
     while (answer == "yes") or (answer == "y"):
         sentence = input("Please enter a sentence: ")
+        sentence = sentence.lower()
         print()
-        print("Removing all whitespace from the sentence")
-        print("-----------------------------------------")
-        print("Using replace   = |" + remove_builtin(sentence) + "|")
-        print("Using iteration = |" + remove_iterative(sentence) + "|")
-        print("Using recursion = |" + remove_recursive(sentence) + "|")
+        print("Calculating the number of z's using ...")
+        print("---------------------------------------")
+        print("Built-in function =", count_built_in(sentence))
+        print("Iteration =", count_iterative(sentence))
+        print("Recursion =", count_recursive(sentence))
         print()
         answer = input("Would you like to continue: ").lower()
         print()
