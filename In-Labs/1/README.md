@@ -1,3 +1,4 @@
+Madison Fichtner
 # CSCI 127, In-Lab 1
 
 ## Logistics
