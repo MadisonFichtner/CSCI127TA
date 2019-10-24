@@ -28,3 +28,4 @@
 28,Sandslash,450,ground
 29,Nidoran,275,poison
 30,Nidorina,365,poison
+810,yeet,777,steel,fire,water,grass,electric,psychic,ice,dragon,dark,fairy,???
