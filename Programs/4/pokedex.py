@@ -1,5 +1,6 @@
 import string
 
+# Pokemon class. Defines what makes a pokemon and allows the user to create said pokemon
 class Pokemon:
     def __init__(self, name, number, cp, types):
         self.number = number # Pokedex number
@@ -22,41 +23,49 @@ class Pokemon:
 def create_pokedex(filename):
     pokedex = []
     file = open(filename, "r")
-
+    
     for pokemon in file:
         pokelist = pokemon.strip().split(",")
-        number = int(pokelist.pop(0))           # number
-        name = pokelist.pop(0)                  # name
-        combat_points = int(pokelist.pop(0))    # combat points
-        types = [pokelist.pop(0)]               # type
-        if len(pokelist) == 1:
-            types += [pokelist.pop(0)]          # optional second type
+        number = int(pokelist[0])               # number
+        name = pokelist[1]                      # name
+        combat_points = int(pokelist[2])        # hit points
+        types = []
+        for position in range(3, len(pokelist)):
+            types += [pokelist[position]]       # type
         pokedex += [Pokemon(name, number, combat_points, types)]
 
     file.close()
     return pokedex
 
 # how_many_combat_points outputs the total number of combat points in the Pokedex
-def how_many_combat_points(pokedex):
+def average_hit_points(pokedex):
     totCP = 0
+    count = 0
     for pkmn in pokedex:
+        count += 1
         totCP += pkmn.cp
-    print("The total CP in this Pokedex is", totCP)
+    totCP = totCP / count
+    totCP = round(totCP,2)
+    print("Average Pokemon combat points = ", totCP)
 
 # how_many_pokemon prints how many pokemon are in the pokedex
-def how_many_pokemon(pokedex):
-    print('There are', len(pokedex), 'Pokemon')
+def total_by_type(pokedex, poke_type):
+    count = 0
+    for i in range(len(pokedex)):
+        if(poke_type in pokedex[i].types):
+            count+=1
+    print('Number of Pokemon that contain type', poke_type, "=", count)
 
 # lookup_name looks through the given pokedex for a pokemon named the given name
-def lookup_name(pokedex, name):
+def lookup_by_name(pokedex, name):
     for pkmn in pokedex:
-        if pkmn.name == name:
+        if pkmn.name.lower() == name:
             print(pkmn)
             return
     print("No Pokemon named", name, "is in the Pokedex")
 
 # lookup_number looks through the given pokedex for a pokemon logged at the given number
-def lookup_number(pokedex, number):
+def lookup_by_number(pokedex, number):
     for pkmn in pokedex:
         if pkmn.number == number:
             print(pkmn)
@@ -94,10 +103,10 @@ def get_choice(low, high, message):
 def print_menu():
     print()
     print("1. Print Pokedex")
-    print("2. Lookup Pokemon by Name")
-    print("3. Lookup Pokemon by Number")
-    print("4. Print Number of Pokemon")
-    print("5. Print Total Combat Points of All Pokemon")
+    print("2. Print Pokemon by Name")
+    print("3. Print Pokemon by Number")
+    print("4. Count Pokemon with Type")
+    print("5. Print Average Pokemon Combat Points")
     print("6. Quit")
 
 # ---------------------------------------
@@ -108,19 +117,22 @@ def main():
     while choice != 6:
         print_menu()
         choice = get_choice(1, 6, "Enter a menu option: ")
-        if choice == 1:
+        if choice == 1:    
             print_pokedex(pokedex)
         elif choice == 2:
-            name = input("Enter a Pokemon name: ")
-            name = name.capitalize()
-            lookup_name(pokedex, name)
+            name = input("Enter a Pokemon name: ").lower()
+            lookup_by_name(pokedex, name)
         elif choice == 3:
             number = get_choice(1, 1000, "Enter a Pokemon number: ")
-            lookup_number(pokedex, number)
+            lookup_by_number(pokedex, number)
         elif choice == 4:
-            how_many_pokemon(pokedex)
+            pokemon_type = input("Enter a Pokemon type: ").lower()
+            total_by_type(pokedex, pokemon_type)
         elif choice == 5:
-            how_many_combat_points(pokedex)
-    print("Thank you. Goodbye!")
+            average_hit_points(pokedex)
+        elif choice == 6:
+            print("Thank you.  Goodbye!")
+        print()
+
 
 main()
